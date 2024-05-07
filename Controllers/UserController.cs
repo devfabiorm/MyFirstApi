@@ -43,4 +43,11 @@ public class UserController : ControllerBase
     {
         return NoContent();
     }
+
+    [HttpDelete]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult Delete()
+    {
+        return NoContent();
+    }
 }
