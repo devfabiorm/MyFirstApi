@@ -10,7 +10,7 @@ public class UserController : ControllerBase
     [Route("{id}")]
     [ProducesResponseType(typeof(Response), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-    public IActionResult Get(int id)
+    public IActionResult Get([FromRoute] int id, [FromQuery] string name, [FromHeader] string? token)
     {
         var response = new Response
         {
