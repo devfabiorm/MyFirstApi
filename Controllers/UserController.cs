@@ -6,7 +6,7 @@ namespace MyFirstApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UserController : ControllerBase
+public class UserController : MyFirstApiBaseController
 {
     [HttpGet]
     [Route("{id}")]
@@ -61,7 +61,9 @@ public class UserController : ControllerBase
             new User { Id = 2, Age = 11, Name = "Paulo" }
         };
 
-        return Ok(response);
+        var key = GetCustomerKey();
+
+        return Ok(key);
     }
 
     [HttpPut("change-password")]
