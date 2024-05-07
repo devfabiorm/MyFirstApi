@@ -9,7 +9,7 @@ public class UserController : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(Response), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-    public IActionResult Get()
+    public IActionResult Get(int name)
     {
         var response = new Response
         {
