@@ -10,11 +10,11 @@ public class UserController : ControllerBase
 {
     [HttpGet]
     [Route("{id}")]
-    [ProducesResponseType(typeof(Response), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-    public IActionResult Get([FromRoute] int id, [FromQuery] string name, [FromHeader] string? token)
+    public IActionResult GetById([FromRoute] int id, [FromQuery] string name, [FromHeader] string? token)
     {
-        var response = new Response
+        var response = new User
         {
             Id = 1,
             Age = 10,
@@ -47,6 +47,26 @@ public class UserController : ControllerBase
     [HttpDelete]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult Delete()
+    {
+        return NoContent();
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(List<User>), StatusCodes.Status200OK)]
+    public IActionResult GetAll()
+    {
+        var response = new List<User>
+        {
+            new User { Id = 1, Age = 10, Name = "Wanderson" },
+            new User { Id = 2, Age = 11, Name = "Paulo" }
+        };
+
+        return Ok(response);
+    }
+
+    [HttpPut("change-password")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult ChangePassword()
     {
         return NoContent();
     }
